@@ -194,7 +194,12 @@ var DomOutline = function (options) {
             // TODO: this doesn't work so well, and haven't tested XPath yet: 
             // Example: p:nth-child(6) -> //*[(position()-0) mod 6=0 and position()>=0]/self::p
             //return cssPath(originalEl, true);
-            self.opts.infobox.contentWindow.toastr.warning('Couldn\'t generate a unique CSS path :(', null, {positionClass: "toast-top-left", newestOnTop: true});
+            var payload = {
+              name: 'toastr',
+              message: 'Couldn\'t generate a unique CSS path :(',
+              args: [ null, {positionClass: "toast-top-left", newestOnTop: true} ]
+            };
+            self.opts.infobox.contentWindow.postMessage(payload, '*');
             //alert('Couldn\'t generate a unique CSS path :(');
             return false;
         } else {

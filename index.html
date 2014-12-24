@@ -40,6 +40,28 @@ $(function() {
     return false;
   });
 });
+function listener(event)
+{
+  // Do we trust the sender of this message?  (might be
+  // different from what we originally opened, for example).
+  if (event.data.name == 'toastr') {
+    var name = event.data.name;
+    var message = event.data.message;
+    var arg = event.data.args;
+    window.toastr.warning(message, arg[0], arg[1]);
+  }else{
+    console.log('Unknown message received: ' + event.data);
+    console.log('Discarded...');
+  }
+
+}
+if (document.addEventListener){
+  console.log ('addEventListener');
+  addEventListener("message", listener, false)
+} else {
+  console.log('attachEvent');
+  attachEvent("onmessage", listener)
+}
 </script>
 </head>
 <body>
