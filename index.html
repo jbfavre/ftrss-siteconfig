@@ -25,17 +25,14 @@
 <script>
 $(function() {
   $('#disable-css').on('click', function() {
-    $('link[rel~="stylesheet"]', window.parent.document).prop('disabled', true);
-    window.parent.ffdomoutline.element = window.parent.ffdomoutline.selected;
-    window.parent.ffdomoutline.updateOutlinePosition('click');
+    var payload = { name: 'toggle_css', disabled: true }
+    window.parent.postMessage(payload, '*');
     $('#disable-css').hide(); $('#enable-css').show();
     return false;
   });
   $('#enable-css').on('click', function() {
-    console.log(window.parent.ffdomoutline.element);
-    $('link[rel~="stylesheet"]', window.parent.document).prop('disabled', false);
-    window.parent.ffdomoutline.element = window.parent.ffdomoutline.selected;
-    window.parent.ffdomoutline.updateOutlinePosition('click');
+    var payload = { name: 'toggle_css', disabled: false }
+    window.parent.postMessage(payload, '*');
     $('#enable-css').hide(); $('#disable-css').show();
     return false;
   });
