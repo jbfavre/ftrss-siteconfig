@@ -247,7 +247,7 @@ var DomOutline = function (options) {
 
     function createInfoBox() {
         //add our debugger box and cache
-        $("<div id='infobox_container'><iframe id='"+self.opts.namespace+"_infobox' src='"+window.ffbase+"/' sandbox='allow-scripts'></iframe></div>").appendTo($("body"));
+        $("<div id='infobox_container'><iframe id='"+self.opts.namespace+"_infobox' src='"+window.ffbase+"/' sandbox='allow-scripts allow-same-origin allow-popups'></iframe></div>").appendTo($("body"));
         self.opts.infobox = document.getElementById(self.opts.namespace+"_infobox");
     }
 
